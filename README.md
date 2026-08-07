@@ -1,8 +1,8 @@
 # Toko Sembako Ariesta
 
-**Nama:** [Nama Mahasiswa]
-**NIM:** [NIM]
-**Kelas:** [Kelas]
+**Nama:** Aufa Maha Dana
+**NIM:** 20240140262
+**Kelas:** B
 **Mata Kuliah:** Pemrograman Aplikasi Web (PAW) — UCP 1
 
 ## Deskripsi Project
@@ -62,7 +62,7 @@ toko-sembako-ariesta/
 
 ## Penjelasan Tampilan (UI)
 
-- **Tema warna:** hijau emerald (identitas toko sembako) dengan aksen putih/abu netral.
+- - **Tema warna:** navy ungu `#321E48` (navbar, footer, heading), slate blue `#43637E` (button hover, harga, link), mint `#65DCD5` (aksen hover card), dan mint pucat `#D9FFF4` (background hero, badge kategori).
 - **Navbar:** sticky di atas, berisi logo toko dan 3 menu (Beranda, Produk, Tanya AI). Di layar mobile, menu disembunyikan di balik tombol hamburger (☰) yang dibuka/ditutup dengan vanilla JS.
 - **Beranda:** hero section berisi headline + CTA ke halaman Produk, diikuti grid preview 3 produk unggulan.
 - **Produk:** form pencarian (nama) dan filter kategori di atas, grid card produk responsif (1 kolom di mobile, 2–3 kolom di layar lebih besar).
