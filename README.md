@@ -1,8 +1,8 @@
 # Toko Sembako Ariesta
 
-**Nama:** Aufa Maha Dana
-**NIM:** 2024014262
-**Kelas:** B
+**Nama:** [Nama Mahasiswa]
+**NIM:** [NIM]
+**Kelas:** [Kelas]
 **Mata Kuliah:** Pemrograman Aplikasi Web (PAW) — UCP 1
 
 ## Deskripsi Project

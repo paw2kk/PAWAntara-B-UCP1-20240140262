@@ -3,13 +3,13 @@
 <head>
   <%- include('partials/head') %>
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+<body class="bg-[#D9FFF4]/20 text-[#321E48] flex flex-col min-h-screen">
   <%- include('partials/navbar') %>
 
   <main class="flex-1">
-    <section class="bg-emerald-50 py-16" aria-labelledby="hero-title">
+    <section class="bg-[#D9FFF4] py-16" aria-labelledby="hero-title">
       <div class="max-w-6xl mx-auto px-4 text-center">
-        <h1 id="hero-title" class="text-3xl md:text-5xl font-bold text-emerald-800">
+        <h1 id="hero-title" class="text-3xl md:text-5xl font-bold text-[#321E48]">
           Belanja Sembako Jadi Lebih Mudah
         </h1>
         <p class="mt-4 text-gray-600 max-w-xl mx-auto">
@@ -17,7 +17,7 @@
         </p>
         <a
           href="/produk"
-          class="inline-block mt-6 bg-emerald-700 text-white px-6 py-3 rounded-lg hover:bg-emerald-800"
+          class="inline-block mt-6 bg-[#321E48] text-white px-6 py-3 rounded-lg hover:bg-[#43637E]"
         >
           Lihat Produk
         </a>
@@ -28,11 +28,11 @@
       <h2 id="preview-title" class="text-2xl font-bold mb-6">Produk Pilihan</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         <% preview.forEach(function(p) { %>
-          <article class="bg-white rounded-lg shadow p-4">
+          <article class="bg-white rounded-lg shadow p-4 border border-transparent hover:border-[#65DCD5] transition-colors">
             <h3 class="font-semibold text-lg"><%= p.name %></h3>
-            <p class="text-emerald-700 font-bold mt-1">Rp <%= p.price.toLocaleString('id-ID') %></p>
+            <p class="text-[#43637E] font-bold mt-1">Rp <%= p.price.toLocaleString('id-ID') %></p>
             <p class="text-sm text-gray-500">Stok: <%= p.stock %></p>
-            <a href="/produk/<%= p.id %>" class="inline-block mt-3 text-sm text-emerald-700 hover:underline">
+            <a href="/produk/<%= p.id %>" class="inline-block mt-3 text-sm text-[#43637E] hover:underline">
               Lihat Detail &rarr;
             </a>
           </article>

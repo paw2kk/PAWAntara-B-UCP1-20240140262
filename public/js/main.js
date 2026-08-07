@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const bubble = document.createElement('p');
       bubble.className = 'text-sm mb-2';
-      bubble.innerHTML = `<span class="font-semibold">Kamu:</span> ${message}`;
+      bubble.innerHTML = `<span class="font-semibold text-[#43637E]">Kamu:</span> ${message}`;
       chatBox.appendChild(bubble);
 
       input.value = '';
