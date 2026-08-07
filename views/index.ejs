@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+  <%- include('partials/navbar') %>
+
+  <main class="flex-1">
+    <section class="bg-emerald-50 py-16" aria-labelledby="hero-title">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <h1 id="hero-title" class="text-3xl md:text-5xl font-bold text-emerald-800">
+          Belanja Sembako Jadi Lebih Mudah
+        </h1>
+        <p class="mt-4 text-gray-600 max-w-xl mx-auto">
+          Cek stok dan harga terbaru langsung dari toko, tanpa perlu menunggu balasan chat.
+        </p>
+        <a
+          href="/produk"
+          class="inline-block mt-6 bg-emerald-700 text-white px-6 py-3 rounded-lg hover:bg-emerald-800"
+        >
+          Lihat Produk
+        </a>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-12" aria-labelledby="preview-title">
+      <h2 id="preview-title" class="text-2xl font-bold mb-6">Produk Pilihan</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <% preview.forEach(function(p) { %>
+          <article class="bg-white rounded-lg shadow p-4">
+            <h3 class="font-semibold text-lg"><%= p.name %></h3>
+            <p class="text-emerald-700 font-bold mt-1">Rp <%= p.price.toLocaleString('id-ID') %></p>
+            <p class="text-sm text-gray-500">Stok: <%= p.stock %></p>
+            <a href="/produk/<%= p.id %>" class="inline-block mt-3 text-sm text-emerald-700 hover:underline">
+              Lihat Detail &rarr;
+            </a>
+          </article>
+        <% }); %>
+      </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/main.js"></script>
+</body>
+</html>

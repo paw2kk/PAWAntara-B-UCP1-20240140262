@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+  <%- include('partials/navbar') %>
+
+  <main class="flex-1 max-w-2xl mx-auto px-4 py-10 w-full">
+    <h1 class="text-2xl font-bold mb-2">Tanya AI</h1>
+    <p class="text-gray-500 mb-6">
+      Punya pertanyaan seputar stok, harga, atau jam buka? Tanya di sini.
+    </p>
+
+    <section class="bg-white rounded-lg shadow p-4">
+      <div
+        id="chat-box"
+        class="h-72 overflow-y-auto border rounded-lg p-3 mb-4 bg-gray-50"
+        aria-live="polite"
+      >
+        <p class="text-sm text-gray-400 italic">
+          Belum ada percakapan. Balasan otomatis dari backend akan aktif di Sprint 2.
+        </p>
+      </div>
+
+      <form id="chat-form" class="flex gap-2">
+        <label for="chat-input" class="sr-only">Tulis pertanyaan</label>
+        <input
+          type="text"
+          id="chat-input"
+          name="message"
+          required
+          placeholder="Tulis pertanyaanmu..."
+          class="flex-1 border rounded-lg px-4 py-2"
+        >
+        <button type="submit" class="bg-emerald-700 text-white px-5 py-2 rounded-lg hover:bg-emerald-800">
+          Kirim
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+  <%- include('partials/navbar') %>
+
+  <main class="flex-1 max-w-6xl mx-auto px-4 py-10 w-full">
+    <h1 class="text-2xl font-bold mb-6">Daftar Produk</h1>
+
+    <form method="GET" action="/produk" class="flex flex-col sm:flex-row gap-3 mb-8" role="search">
+      <div class="flex-1">
+        <label for="search" class="sr-only">Cari produk</label>
+        <input
+          type="text"
+          id="search"
+          name="search"
+          value="<%= search %>"
+          placeholder="Cari nama produk..."
+          class="w-full border rounded-lg px-4 py-2"
+        >
+      </div>
+      <div>
+        <label for="kategori" class="sr-only">Kategori</label>
+        <select id="kategori" name="kategori" class="border rounded-lg px-4 py-2">
+          <option value="">Semua Kategori</option>
+          <option value="sembako" <%= kategori === 'sembako' ? 'selected' : '' %>>Sembako</option>
+          <option value="rumah-tangga" <%= kategori === 'rumah-tangga' ? 'selected' : '' %>>Rumah Tangga</option>
+        </select>
+      </div>
+      <button type="submit" class="bg-emerald-700 text-white px-6 py-2 rounded-lg hover:bg-emerald-800">
+        Filter
+      </button>
+    </form>
+
+    <% if (products.length === 0) { %>
+      <p class="text-gray-500">Tidak ada produk yang cocok dengan pencarian.</p>
+    <% } else { %>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <% products.forEach(function(p) { %>
+          <article class="bg-white rounded-lg shadow p-4">
+            <h2 class="font-semibold text-lg"><%= p.name %></h2>
+            <p class="text-xs uppercase text-gray-400 mt-1"><%= p.category %></p>
+            <p class="text-emerald-700 font-bold mt-2">Rp <%= p.price.toLocaleString('id-ID') %></p>
+            <p class="text-sm text-gray-500">Stok: <%= p.stock %></p>
+            <a href="/produk/<%= p.id %>" class="inline-block mt-3 text-sm text-emerald-700 hover:underline">
+              Lihat Detail &rarr;
+            </a>
+          </article>
+        <% }); %>
+      </div>
+    <% } %>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/main.js"></script>
+</body>
+</html>

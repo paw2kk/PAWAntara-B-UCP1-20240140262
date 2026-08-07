@@ -1,0 +1,22 @@
+/* Styling dasar (Tailwind lewat CDN dipakai untuk utility class) */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Breakpoint mobile: layar kecil */
+@media (max-width: 640px) {
+  h1 {
+    line-height: 1.25;
+  }
+
+  #nav-menu {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* Breakpoint desktop: sembunyikan tombol hamburger, tampilkan menu horizontal */
+@media (min-width: 768px) {
+  #hamburger-btn {
+    display: none;
+  }
+}

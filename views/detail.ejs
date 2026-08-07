@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+  <%- include('partials/navbar') %>
+
+  <main class="flex-1 max-w-3xl mx-auto px-4 py-10 w-full">
+    <% if (!product) { %>
+      <section class="text-center py-16" aria-labelledby="not-found-title">
+        <h1 id="not-found-title" class="text-2xl font-bold text-red-600">Produk Tidak Ditemukan</h1>
+        <p class="mt-3 text-gray-500">Maaf, produk yang kamu cari tidak tersedia.</p>
+        <a
+          href="/produk"
+          class="inline-block mt-6 bg-emerald-700 text-white px-6 py-2 rounded-lg hover:bg-emerald-800"
+        >
+          Kembali ke Daftar Produk
+        </a>
+      </section>
+    <% } else { %>
+      <article>
+        <a href="/produk" class="text-sm text-emerald-700 hover:underline">&larr; Kembali</a>
+        <h1 class="text-3xl font-bold mt-3"><%= product.name %></h1>
+        <p class="text-xs uppercase text-gray-400 mt-1"><%= product.category %></p>
+        <p class="text-2xl text-emerald-700 font-bold mt-4">Rp <%= product.price.toLocaleString('id-ID') %></p>
+        <p class="text-gray-500 mt-1">Stok tersedia: <%= product.stock %></p>
+        <p class="mt-4 text-gray-700"><%= product.description %></p>
+      </article>
+    <% } %>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/main.js"></script>
+</body>
+</html>
