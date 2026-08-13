@@ -3,37 +3,77 @@
 <head>
   <%- include('partials/head') %>
 </head>
-<body class="bg-[#D9FFF4]/20 text-[#321E48] flex flex-col min-h-screen">
+<body class="bg-white text-[#321E48] flex flex-col min-h-screen">
   <%- include('partials/navbar') %>
 
   <main class="flex-1">
-    <section class="bg-[#D9FFF4] py-16" aria-labelledby="hero-title">
-      <div class="max-w-6xl mx-auto px-4 text-center">
-        <h1 id="hero-title" class="text-3xl md:text-5xl font-bold text-[#321E48]">
-          Belanja Sembako Jadi Lebih Mudah
-        </h1>
-        <p class="mt-4 text-gray-600 max-w-xl mx-auto">
-          Cek stok dan harga terbaru langsung dari toko, tanpa perlu menunggu balasan chat.
-        </p>
-        <a
-          href="/produk"
-          class="inline-block mt-6 bg-[#321E48] text-white px-6 py-3 rounded-lg hover:bg-[#43637E]"
-        >
-          Lihat Produk
-        </a>
+    <section class="hero-torn pb-16 pt-14 md:pt-20">
+      <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="uppercase text-xs tracking-[0.2em] text-[#43637E] font-semibold mb-4">Sembako &amp; Kebutuhan Rumah Tangga</p>
+          <h1 class="font-display text-4xl md:text-5xl font-semibold leading-[1.1] text-[#321E48]">
+            Belanja sembako,<br class="hidden md:block"> tanpa nunggu balasan chat.
+          </h1>
+          <p class="mt-5 text-[#43637E] text-lg max-w-md">
+            Cek stok dan harga terbaru toko kami kapan saja — dari beras sampai kebutuhan cuci-cuci rumah.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="/produk" class="bg-[#321E48] text-white px-6 py-3 rounded-full font-medium hover:bg-[#43637E] transition-colors">
+              Lihat Semua Produk
+            </a>
+            <a href="/tanya-ai" class="border border-[#321E48] text-[#321E48] px-6 py-3 rounded-full font-medium hover:bg-[#321E48] hover:text-white transition-colors">
+              Tanya AI
+            </a>
+          </div>
+
+          <dl class="mt-10 grid grid-cols-3 gap-4 max-w-md">
+            <div>
+              <dt class="text-2xl font-display font-semibold text-[#321E48]">6+</dt>
+              <dd class="text-xs text-[#43637E]">Produk tersedia</dd>
+            </div>
+            <div>
+              <dt class="text-2xl font-display font-semibold text-[#321E48]">07–20</dt>
+              <dd class="text-xs text-[#43637E]">Jam buka toko</dd>
+            </div>
+            <div>
+              <dt class="text-2xl font-display font-semibold text-[#321E48]">100%</dt>
+              <dd class="text-xs text-[#43637E]">Harga transparan</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <% heroTiles.forEach(function(p, i) { %>
+            <div class="rounded-2xl p-6 flex flex-col justify-between h-36 md:h-40 <%= i === 1 ? 'mt-6' : '' %> <%= i % 2 === 0 ? 'bg-white' : 'bg-[#321E48]' %> shadow-sm">
+              <span class="text-3xl" aria-hidden="true"><%= p.icon %></span>
+              <span class="num text-sm <%= i % 2 === 0 ? 'text-[#321E48]' : 'text-[#65DCD5]' %>">Rp <%= p.price.toLocaleString('id-ID') %></span>
+            </div>
+          <% }); %>
+        </div>
       </div>
     </section>
 
-    <section class="max-w-6xl mx-auto px-4 py-12" aria-labelledby="preview-title">
-      <h2 id="preview-title" class="text-2xl font-bold mb-6">Produk Pilihan</h2>
+    <section class="max-w-6xl mx-auto px-4 py-16" aria-labelledby="preview-title">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <p class="uppercase text-xs tracking-[0.2em] text-[#43637E] font-semibold mb-2">Terlaris minggu ini</p>
+          <h2 id="preview-title" class="font-display text-2xl md:text-3xl font-semibold">Produk Pilihan</h2>
+        </div>
+        <a href="/produk" class="hidden sm:inline-block text-sm font-medium text-[#43637E] hover:text-[#321E48]">Lihat semua &rarr;</a>
+      </div>
+
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         <% preview.forEach(function(p) { %>
-          <article class="bg-white rounded-lg shadow p-4 border border-transparent hover:border-[#65DCD5] transition-colors">
-            <h3 class="font-semibold text-lg"><%= p.name %></h3>
-            <p class="text-[#43637E] font-bold mt-1">Rp <%= p.price.toLocaleString('id-ID') %></p>
-            <p class="text-sm text-gray-500">Stok: <%= p.stock %></p>
-            <a href="/produk/<%= p.id %>" class="inline-block mt-3 text-sm text-[#43637E] hover:underline">
-              Lihat Detail &rarr;
+          <article class="group bg-white rounded-2xl border border-[#D9FFF4] p-5 hover:border-[#65DCD5] hover:shadow-lg transition-all">
+            <div class="w-14 h-14 rounded-xl bg-[#D9FFF4] flex items-center justify-center text-2xl mb-4" aria-hidden="true"><%= p.icon %></div>
+            <span class="inline-block text-[11px] uppercase tracking-wide bg-[#321E48]/5 text-[#43637E] px-2 py-0.5 rounded-full"><%= p.category %></span>
+            <h3 class="font-semibold text-lg mt-2"><%= p.name %></h3>
+            <div class="flex items-center justify-between mt-3">
+              <span class="num font-semibold text-[#321E48]">Rp <%= p.price.toLocaleString('id-ID') %></span>
+              <span class="text-xs text-[#43637E]">Stok <%= p.stock %></span>
+            </div>
+            <a href="/produk/<%= p.id %>" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[#43637E] group-hover:text-[#321E48]">
+              Lihat Detail <span aria-hidden="true">&rarr;</span>
             </a>
           </article>
         <% }); %>

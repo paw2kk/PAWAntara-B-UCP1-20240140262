@@ -3,29 +3,58 @@
 <head>
   <%- include('partials/head') %>
 </head>
-<body class="bg-[#D9FFF4]/20 text-[#321E48] flex flex-col min-h-screen">
+<body class="bg-white text-[#321E48] flex flex-col min-h-screen">
   <%- include('partials/navbar') %>
 
-  <main class="flex-1 max-w-3xl mx-auto px-4 py-10 w-full">
+  <main class="flex-1 max-w-4xl mx-auto px-4 py-12 w-full">
     <% if (!product) { %>
-      <section class="text-center py-16" aria-labelledby="not-found-title">
-        <h1 id="not-found-title" class="text-2xl font-bold text-red-600">Produk Tidak Ditemukan</h1>
-        <p class="mt-3 text-gray-500">Maaf, produk yang kamu cari tidak tersedia.</p>
+      <section class="text-center py-20" aria-labelledby="not-found-title">
+        <p class="text-5xl mb-4" aria-hidden="true">🧺</p>
+        <h1 id="not-found-title" class="font-display text-2xl font-semibold text-[#321E48]">Produk Tidak Ditemukan</h1>
+        <p class="mt-3 text-[#43637E]">Maaf, produk yang kamu cari tidak tersedia atau sudah tidak dijual.</p>
         <a
           href="/produk"
-          class="inline-block mt-6 bg-[#321E48] text-white px-6 py-2 rounded-lg hover:bg-[#43637E]"
+          class="inline-block mt-8 bg-[#321E48] text-white px-6 py-3 rounded-full font-medium hover:bg-[#43637E] transition-colors"
         >
           Kembali ke Daftar Produk
         </a>
       </section>
     <% } else { %>
-      <article>
-        <a href="/produk" class="text-sm text-[#43637E] hover:underline">&larr; Kembali</a>
-        <h1 class="text-3xl font-bold mt-3"><%= product.name %></h1>
-        <span class="inline-block text-xs uppercase bg-[#D9FFF4] text-[#321E48] px-2 py-0.5 rounded-full mt-1"><%= product.category %></span>
-        <p class="text-2xl text-[#43637E] font-bold mt-4">Rp <%= product.price.toLocaleString('id-ID') %></p>
-        <p class="text-gray-500 mt-1">Stok tersedia: <%= product.stock %></p>
-        <p class="mt-4 text-gray-700"><%= product.description %></p>
+      <nav aria-label="Breadcrumb" class="text-sm text-[#43637E] mb-6">
+        <a href="/produk" class="hover:text-[#321E48]">Produk</a>
+        <span class="mx-1">/</span>
+        <span class="text-[#321E48]"><%= product.name %></span>
+      </nav>
+
+      <article class="grid md:grid-cols-2 gap-10 items-start">
+        <div class="rounded-2xl bg-[#D9FFF4] aspect-square flex items-center justify-center text-8xl" aria-hidden="true">
+          <%= product.icon %>
+        </div>
+
+        <div>
+          <span class="inline-block text-[11px] uppercase tracking-wide bg-[#321E48]/5 text-[#43637E] px-2 py-0.5 rounded-full"><%= product.category %></span>
+          <h1 class="font-display text-3xl font-semibold mt-3"><%= product.name %></h1>
+          <p class="num text-2xl font-semibold text-[#321E48] mt-4">Rp <%= product.price.toLocaleString('id-ID') %></p>
+
+          <div class="flex items-center gap-2 mt-3">
+            <% if (product.stock < 15) { %>
+              <span class="text-xs font-medium text-amber-700 bg-amber-50 px-2 py-1 rounded-full">Stok terbatas &middot; <%= product.stock %> tersisa</span>
+            <% } else { %>
+              <span class="text-xs font-medium text-[#43637E] bg-[#D9FFF4] px-2 py-1 rounded-full">Stok tersedia &middot; <%= product.stock %> unit</span>
+            <% } %>
+          </div>
+
+          <p class="mt-6 text-[#43637E] leading-relaxed"><%= product.description %></p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="/tanya-ai" class="bg-[#321E48] text-white px-6 py-3 rounded-full font-medium hover:bg-[#43637E] transition-colors">
+              Tanya Ketersediaan
+            </a>
+            <a href="/produk" class="border border-[#321E48] text-[#321E48] px-6 py-3 rounded-full font-medium hover:bg-[#321E48] hover:text-white transition-colors">
+              Lihat Produk Lain
+            </a>
+          </div>
+        </div>
       </article>
     <% } %>
   </main>

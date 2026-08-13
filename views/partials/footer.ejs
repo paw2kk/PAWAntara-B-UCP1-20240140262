@@ -1,6 +1,31 @@
-<footer class="bg-[#321E48] text-[#D9FFF4]/80 mt-12">
-  <div class="max-w-6xl mx-auto px-4 py-6 text-center text-sm">
-    <p>&copy; <%= new Date().getFullYear() %> Toko Sembako Ariesta. Semua hak dilindungi.</p>
-    <p class="mt-1">Buka setiap hari, jam 07.00 - 20.00</p>
+<footer class="bg-[#321E48] text-[#D9FFF4] mt-16">
+  <div class="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 sm:grid-cols-3 gap-10">
+    <div>
+      <div class="flex items-center gap-2 text-white mb-3">
+        <span class="w-8 h-8 rounded-full bg-[#65DCD5] text-[#321E48] flex items-center justify-center" aria-hidden="true">🛒</span>
+        <span class="font-display font-semibold">Toko Ariesta</span>
+      </div>
+      <p class="text-sm text-[#D9FFF4]/80 leading-relaxed">
+        Sembako dan kebutuhan rumah tangga harian, stok dan harga transparan setiap hari.
+      </p>
+    </div>
+
+    <div>
+      <h3 class="text-sm font-semibold text-white uppercase tracking-wide mb-3">Jam Operasional</h3>
+      <p class="text-sm text-[#D9FFF4]/80">Setiap hari</p>
+      <p class="text-sm text-[#D9FFF4]/80">07.00 – 20.00 WIB</p>
+    </div>
+
+    <div>
+      <h3 class="text-sm font-semibold text-white uppercase tracking-wide mb-3">Kontak</h3>
+      <p class="text-sm text-[#D9FFF4]/80">Jl. Contoh No. 123, Yogyakarta</p>
+      <p class="text-sm text-[#D9FFF4]/80">WA: 08xx-xxxx-xxxx</p>
+    </div>
+  </div>
+
+  <div class="border-t border-[#43637E] py-4">
+    <p class="text-center text-xs text-[#D9FFF4]/70">
+      &copy; <%= new Date().getFullYear() %> Toko Sembako Ariesta. Semua hak dilindungi.
+    </p>
   </div>
 </footer>

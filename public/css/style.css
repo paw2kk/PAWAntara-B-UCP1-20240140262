@@ -1,20 +1,67 @@
-/* Styling dasar (Tailwind lewat CDN dipakai untuk utility class) */
+:root {
+  --color-navy: #321E48;
+  --color-slate: #43637E;
+  --color-mint: #65DCD5;
+  --color-mint-pale: #D9FFF4;
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
-/* Breakpoint mobile: layar kecil */
+/* Display typeface for headings - used sparingly for character */
+.font-display {
+  font-family: 'Fraunces', serif;
+}
+
+/* Monospace treatment for prices, like a real price tag / receipt */
+.num {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Signature: torn receipt-paper edge under the hero section */
+.hero-torn {
+  position: relative;
+  background: var(--color-mint-pale);
+}
+
+.hero-torn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -19px;
+  height: 20px;
+  background:
+    linear-gradient(-45deg, transparent 10px, var(--color-mint-pale) 10px) 0 0 / 20px 20px,
+    linear-gradient(45deg, transparent 10px, var(--color-mint-pale) 10px) 0 0 / 20px 20px;
+  background-repeat: repeat-x;
+}
+
+/* Visible keyboard focus for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-mint);
+  outline-offset: 2px;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+/* Mobile breakpoint */
 @media (max-width: 640px) {
-  h1 {
-    line-height: 1.25;
-  }
-
-  #nav-menu {
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  h1.font-display {
+    line-height: 1.15;
   }
 }
 
-/* Breakpoint desktop: sembunyikan tombol hamburger, tampilkan menu horizontal */
+/* Desktop breakpoint */
 @media (min-width: 768px) {
   #hamburger-btn {
     display: none;
