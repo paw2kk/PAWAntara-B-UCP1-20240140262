@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body class="bg-white text-[#321E48] flex flex-col min-h-screen">
+  <%- include('partials/navbar') %>
+
+  <main class="flex-1 max-w-6xl mx-auto px-4 py-12 w-full">
+    <div class="flex flex-wrap items-end justify-between gap-4 mb-8">
+      <div>
+        <p class="uppercase text-xs tracking-[0.2em] text-[#43637E] font-semibold mb-2">Panel Admin</p>
+        <h1 class="font-display text-3xl font-semibold">Dashboard Produk</h1>
+        <p class="text-[#43637E] text-sm mt-1">Halo, <%= adminUsername %>. Kelola produk, harga, dan stok toko di sini.</p>
+      </div>
+      <button
+        type="button"
+        id="dashboard-logout-btn"
+        class="border border-[#321E48] text-[#321E48] px-5 py-2 rounded-full text-sm font-medium hover:bg-[#321E48] hover:text-white transition-colors"
+      >
+        Logout
+      </button>
+    </div>
+
+    <section class="grid md:grid-cols-5 gap-8">
+      <!-- Form tambah/edit produk -->
+      <div class="md:col-span-2">
+        <div class="border border-[#D9FFF4] rounded-2xl p-6 sticky top-24">
+          <h2 id="form-title" class="font-display text-xl font-semibold mb-4">Tambah Produk</h2>
+
+          <form id="product-form" class="space-y-4" novalidate>
+            <input type="hidden" id="product-id" value="">
+
+            <div>
+              <label for="product-name" class="block text-sm font-medium mb-1.5">Nama Produk</label>
+              <input type="text" id="product-name" name="name" required
+                class="w-full border border-[#D9FFF4] focus:border-[#65DCD5] focus:outline-none rounded-lg px-4 py-2 text-sm">
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label for="product-category" class="block text-sm font-medium mb-1.5">Kategori</label>
+                <select id="product-category" name="category" required
+                  class="w-full border border-[#D9FFF4] focus:border-[#65DCD5] focus:outline-none rounded-lg px-3 py-2 text-sm">
+                  <option value="sembako">Sembako</option>
+                  <option value="rumah-tangga">Rumah Tangga</option>
+                </select>
+              </div>
+              <div>
+                <label for="product-icon" class="block text-sm font-medium mb-1.5">Icon (emoji)</label>
+                <input type="text" id="product-icon" name="icon" maxlength="4" placeholder="🌾"
+                  class="w-full border border-[#D9FFF4] focus:border-[#65DCD5] focus:outline-none rounded-lg px-4 py-2 text-sm">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label for="product-price" class="block text-sm font-medium mb-1.5">Harga (Rp)</label>
+                <input type="number" id="product-price" name="price" min="0" required
+                  class="w-full border border-[#D9FFF4] focus:border-[#65DCD5] focus:outline-none rounded-lg px-4 py-2 text-sm">
+              </div>
+              <div>
+                <label for="product-stock" class="block text-sm font-medium mb-1.5">Stok</label>
+                <input type="number" id="product-stock" name="stock" min="0" required
+                  class="w-full border border-[#D9FFF4] focus:border-[#65DCD5] focus:outline-none rounded-lg px-4 py-2 text-sm">
+              </div>
+            </div>
+
+            <div>
+              <label for="product-description" class="block text-sm font-medium mb-1.5">Deskripsi</label>
+              <textarea id="product-description" name="description" rows="3"
+                class="w-full border border-[#D9FFF4] focus:border-[#65DCD5] focus:outline-none rounded-lg px-4 py-2 text-sm"></textarea>
+            </div>
+
+            <p id="form-error" class="text-sm text-red-600 hidden" role="alert"></p>
+            <p id="form-success" class="text-sm text-emerald-600 hidden" role="status"></p>
+
+            <div class="flex gap-2">
+              <button type="submit" id="form-submit-btn"
+                class="flex-1 bg-[#321E48] text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-[#43637E] transition-colors">
+                Simpan Produk
+              </button>
+              <button type="button" id="form-cancel-btn"
+                class="hidden border border-[#D9FFF4] text-[#43637E] px-5 py-2.5 rounded-full text-sm font-medium hover:border-[#65DCD5]">
+                Batal
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Tabel produk -->
+      <div class="md:col-span-3">
+        <div class="border border-[#D9FFF4] rounded-2xl overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-[#D9FFF4]/40 text-left">
+              <tr>
+                <th class="px-4 py-3 font-semibold">Produk</th>
+                <th class="px-4 py-3 font-semibold">Harga</th>
+                <th class="px-4 py-3 font-semibold">Stok</th>
+                <th class="px-4 py-3 font-semibold text-right">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="product-table-body">
+              <tr>
+                <td colspan="4" class="px-4 py-8 text-center text-[#43637E]">Memuat data produk...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/main.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

@@ -2,26 +2,14 @@ const express = require('express');
 const router = express.Router();
 const products = require('../data/products');
 
-// GET /produk - daftar produk + filter kategori/search lewat query string
+// GET /produk - halaman katalog produk.
+// Data produk TIDAK lagi di-render langsung dari server (lihat public/js/produk.js) -
+// halaman ini cuma render shell-nya, lalu JS di client yang fetch GET /api/products
+// dan menerapkan filter kategori/pencarian dari query string.
 router.get('/', (req, res) => {
   const { kategori, search } = req.query;
-  let filtered = products;
-
-  if (kategori) {
-    filtered = filtered.filter(
-      (p) => p.category.toLowerCase() === kategori.toLowerCase()
-    );
-  }
-
-  if (search) {
-    filtered = filtered.filter((p) =>
-      p.name.toLowerCase().includes(search.toLowerCase())
-    );
-  }
-
   res.render('produk', {
     title: 'Produk',
-    products: filtered,
     kategori: kategori || '',
     search: search || ''
   });

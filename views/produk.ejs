@@ -3,57 +3,56 @@
 <head>
   <%- include('partials/head') %>
 </head>
-<body class="bg-[#D9FFF4]/20 text-[#321E48] flex flex-col min-h-screen">
+<body class="bg-white text-[#321E48] flex flex-col min-h-screen">
   <%- include('partials/navbar') %>
 
-  <main class="flex-1 max-w-6xl mx-auto px-4 py-10 w-full">
-    <h1 class="text-2xl font-bold mb-6">Daftar Produk</h1>
+  <main class="flex-1 max-w-6xl mx-auto px-4 py-12 w-full">
+    <div class="mb-8">
+      <p class="uppercase text-xs tracking-[0.2em] text-[#43637E] font-semibold mb-2">Katalog</p>
+      <h1 class="font-display text-3xl font-semibold">Daftar Produk</h1>
+    </div>
 
-    <form method="GET" action="/produk" class="flex flex-col sm:flex-row gap-3 mb-8" role="search">
-      <div class="flex-1">
+    <form method="GET" action="/produk" class="mb-6" role="search">
+      <div class="relative mb-4">
         <label for="search" class="sr-only">Cari produk</label>
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[#43637E]" aria-hidden="true">🔍</span>
         <input
           type="text"
           id="search"
           name="search"
           value="<%= search %>"
-          placeholder="Cari nama produk..."
-          class="w-full border rounded-lg px-4 py-2"
+          placeholder="Cari nama produk, misal: beras, gula..."
+          class="w-full border border-[#D9FFF4] focus:border-[#65DCD5] focus:outline-none rounded-full pl-11 pr-4 py-3 text-sm"
         >
       </div>
-      <div>
-        <label for="kategori" class="sr-only">Kategori</label>
-        <select id="kategori" name="kategori" class="border rounded-lg px-4 py-2">
-          <option value="">Semua Kategori</option>
-          <option value="sembako" <%= kategori === 'sembako' ? 'selected' : '' %>>Sembako</option>
-          <option value="rumah-tangga" <%= kategori === 'rumah-tangga' ? 'selected' : '' %>>Rumah Tangga</option>
-        </select>
-      </div>
-      <button type="submit" class="bg-[#321E48] text-white px-6 py-2 rounded-lg hover:bg-[#43637E]">
-        Filter
-      </button>
-    </form>
 
-    <% if (products.length === 0) { %>
-      <p class="text-gray-500">Tidak ada produk yang cocok dengan pencarian.</p>
-    <% } else { %>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <% products.forEach(function(p) { %>
-          <article class="bg-white rounded-lg shadow p-4 border border-transparent hover:border-[#65DCD5] transition-colors">
-            <h2 class="font-semibold text-lg"><%= p.name %></h2>
-            <span class="inline-block text-xs uppercase bg-[#D9FFF4] text-[#321E48] px-2 py-0.5 rounded-full mt-1"><%= p.category %></span>
-            <p class="text-[#43637E] font-bold mt-2">Rp <%= p.price.toLocaleString('id-ID') %></p>
-            <p class="text-sm text-gray-500">Stok: <%= p.stock %></p>
-            <a href="/produk/<%= p.id %>" class="inline-block mt-3 text-sm text-[#43637E] hover:underline">
-              Lihat Detail &rarr;
-            </a>
-          </article>
+      <div class="flex flex-wrap items-center gap-2">
+        <% const pills = [{ value: '', label: 'Semua' }, { value: 'sembako', label: 'Sembako' }, { value: 'rumah-tangga', label: 'Rumah Tangga' }]; %>
+        <% pills.forEach(function(pill) { %>
+          <button
+            type="submit"
+            name="kategori"
+            value="<%= pill.value %>"
+            class="px-4 py-1.5 rounded-full text-sm font-medium border transition-colors <%= kategori === pill.value ? 'bg-[#321E48] text-white border-[#321E48]' : 'bg-white text-[#43637E] border-[#D9FFF4] hover:border-[#65DCD5]' %>"
+          >
+            <%= pill.label %>
+          </button>
         <% }); %>
       </div>
-    <% } %>
+    </form>
+
+    <p id="product-count" class="text-sm text-[#43637E] mb-6">Memuat produk...</p>
+
+    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" aria-live="polite"></div>
+
+    <div id="product-empty" class="hidden text-center py-16 border border-dashed border-[#D9FFF4] rounded-2xl">
+      <p class="text-3xl mb-2" aria-hidden="true">🔎</p>
+      <p class="text-[#43637E]">Tidak ada produk yang cocok. Coba kata kunci atau kategori lain.</p>
+    </div>
   </main>
 
   <%- include('partials/footer') %>
   <script src="/js/main.js"></script>
+  <script src="/js/produk.js"></script>
 </body>
 </html>

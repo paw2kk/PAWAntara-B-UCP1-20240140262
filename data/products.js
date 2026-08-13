@@ -6,6 +6,7 @@ const products = [
     category: 'sembako',
     price: 65000,
     stock: 20,
+    icon: '🌾',
     description: 'Beras pulen kualitas premium, cocok untuk kebutuhan sehari-hari.'
   },
   {
@@ -14,6 +15,7 @@ const products = [
     category: 'sembako',
     price: 34000,
     stock: 15,
+    icon: '🫙',
     description: 'Minyak goreng kemasan 2 liter, jernih dan berkualitas.'
   },
   {
@@ -22,6 +24,7 @@ const products = [
     category: 'sembako',
     price: 15000,
     stock: 30,
+    icon: '🧂',
     description: 'Gula pasir putih bersih, kemasan 1 kilogram.'
   },
   {
@@ -30,6 +33,7 @@ const products = [
     category: 'sembako',
     price: 28000,
     stock: 25,
+    icon: '🥚',
     description: 'Telur ayam segar pilihan, cocok untuk lauk maupun kue.'
   },
   {
@@ -38,6 +42,7 @@ const products = [
     category: 'rumah-tangga',
     price: 12000,
     stock: 18,
+    icon: '🧼',
     description: 'Sabun cuci piring wangi jeruk, ampuh mengangkat lemak membandel.'
   },
   {
@@ -46,6 +51,7 @@ const products = [
     category: 'rumah-tangga',
     price: 22000,
     stock: 12,
+    icon: '🧺',
     description: 'Deterjen bubuk untuk cucian bersih dan wangi tahan lama.'
   }
 ];
