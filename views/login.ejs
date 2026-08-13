@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body class="bg-white text-[#321E48] flex flex-col min-h-screen">
+  <%- include('partials/navbar') %>
+
+  <main class="flex-1 flex items-center justify-center px-4 py-16">
+    <div class="w-full max-w-sm">
+      <div class="text-center mb-8">
+        <p class="uppercase text-xs tracking-[0.2em] text-[#43637E] font-semibold mb-2">Khusus Admin &amp; Kasir</p>
+        <h1 class="font-display text-3xl font-semibold">Login</h1>
+        <p class="text-[#43637E] text-sm mt-2">Masuk untuk mengelola produk, harga, dan stok toko.</p>
+      </div>
+
+      <form id="login-form" class="border border-[#D9FFF4] rounded-2xl p-6 space-y-4" novalidate>
+        <div>
+          <label for="username" class="block text-sm font-medium mb-1.5">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            required
+            autocomplete="username"
+            class="w-full border border-[#D9FFF4] focus:border-[#65DCD5] focus:outline-none rounded-lg px-4 py-2.5 text-sm"
+          >
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium mb-1.5">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            autocomplete="current-password"
+            class="w-full border border-[#D9FFF4] focus:border-[#65DCD5] focus:outline-none rounded-lg px-4 py-2.5 text-sm"
+          >
+        </div>
+
+        <p id="login-error" class="text-sm text-red-600 hidden" role="alert"></p>
+
+        <button
+          type="submit"
+          id="login-submit"
+          class="w-full bg-[#321E48] text-white px-6 py-2.5 rounded-full font-medium hover:bg-[#43637E] transition-colors"
+        >
+          Masuk
+        </button>
+      </form>
+
+      <p class="text-center text-xs text-[#43637E] mt-6">
+        Halaman ini khusus admin/kasir toko. Pelanggan tidak perlu login untuk melihat produk atau Tanya AI.
+      </p>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/main.js"></script>
+  <script src="/js/login.js"></script>
+</body>
+</html>
